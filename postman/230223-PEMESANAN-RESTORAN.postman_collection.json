@@ -1,0 +1,832 @@
+{
+	"info": {
+		"_postman_id": "2df5f1c8-6243-4fa5-a549-f011c487d28f",
+		"name": "PEMESANAN - RESTORAN",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "6204551"
+	},
+	"item": [
+		{
+			"name": "TOKEN AUTH - ORDER",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true,
+				"disabledSystemHeaders": {
+					"user-agent": true,
+					"accept": true,
+					"accept-encoding": true,
+					"connection": true
+				}
+			},
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "system-key",
+						"value": "{{system-key}}",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{host}}/auth?username=msorderm01&password=pass_msorderm01",
+					"host": [
+						"{{host}}"
+					],
+					"path": [
+						"auth"
+					],
+					"query": [
+						{
+							"key": "username",
+							"value": "msorderm01"
+						},
+						{
+							"key": "password",
+							"value": "pass_msorderm01"
+						}
+					]
+				},
+				"description": "Mendapatkan token, digunakan untuk post upload dan inquiry"
+			},
+			"response": []
+		},
+		{
+			"name": "TOKEN AUTH - KITCHEN",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true,
+				"disabledSystemHeaders": {
+					"user-agent": true,
+					"accept": true,
+					"accept-encoding": true,
+					"connection": true
+				}
+			},
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "system-key",
+						"value": "{{system-key}}",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{host}}/auth?username=mskitchenp01&password=pass_mskitchenp01",
+					"host": [
+						"{{host}}"
+					],
+					"path": [
+						"auth"
+					],
+					"query": [
+						{
+							"key": "username",
+							"value": "mskitchenp01"
+						},
+						{
+							"key": "password",
+							"value": "pass_mskitchenp01"
+						}
+					]
+				},
+				"description": "Mendapatkan token, digunakan untuk post upload dan inquiry"
+			},
+			"response": []
+		},
+		{
+			"name": "MENU",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "system-key",
+						"value": "{{system-key}}",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "{{host}}/index.php/menu",
+					"host": [
+						"{{host}}"
+					],
+					"path": [
+						"index.php",
+						"menu"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "MENU BY ID",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [
+					{
+						"key": "system-key",
+						"value": "{{system-key}}",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "{{host}}/index.php/menu/id/1",
+					"host": [
+						"{{host}}"
+					],
+					"path": [
+						"index.php",
+						"menu",
+						"id",
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "UPDATE MENU BY PARAM",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "system-key",
+						"value": "{{system-key}}",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"request_name\": \"editMenuByParam\",\n    \"where\": {\n        \"id\": \"1\"\n    },\n    \"data\": {\n        \"status\": 1,\n        \"del: 1\n    }\n}"
+				},
+				"url": {
+					"raw": "{{host}}/menu",
+					"host": [
+						"{{host}}"
+					],
+					"path": [
+						"menu"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "EMPLOYEE",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [
+					{
+						"key": "system-key",
+						"value": "{{system-key}}",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "{{host}}/index.php/employee",
+					"host": [
+						"{{host}}"
+					],
+					"path": [
+						"index.php",
+						"employee"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "EMPLOYEE BY ID",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [
+					{
+						"key": "system-key",
+						"value": "{{system-key}}",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "{{host}}/index.php/employee/id/2",
+					"host": [
+						"{{host}}"
+					],
+					"path": [
+						"index.php",
+						"employee",
+						"id",
+						"2"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GET EMPLOYEE BY PARAM",
+			"protocolProfileBehavior": {
+				"disabledSystemHeaders": {
+					"content-type": true
+				}
+			},
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "system-key",
+						"value": "{{system-key}}",
+						"type": "text"
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"request_name\": \"getEmployeeByParam\",\n    \"data\": {\n        \"email\": \"ranomuhamad98@gmail.com\",\n        \"password\": \"rano123\"\n    }\n}"
+				},
+				"url": {
+					"raw": "{{host}}/index.php/employee",
+					"host": [
+						"{{host}}"
+					],
+					"path": [
+						"index.php",
+						"employee"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "UPDATE EMPLOYEE BY PARAM",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "system-key",
+						"value": "{{system-key}}",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"request_name\": \"editEmployeeByParam\",\n    \"where\": {\n        \"id\": \"2\"\n    },\n    \"data\": {\n        \"nama_depan\": \"Rano\",\n        \"jabatan\": \"programmer\",\n        \"email\": \"ranomuhamad98@gmail.com\"\n    }\n}"
+				},
+				"url": {
+					"raw": "{{host}}/index.php/employee",
+					"host": [
+						"{{host}}"
+					],
+					"path": [
+						"index.php",
+						"employee"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "DELETE EMPLOYEE BY PARAM",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "system-key",
+						"value": "{{system-key}}",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"request_name\": \"delEmployeeByParam\",\n    \"data\": {\n        \"id\": \"2\"\n    }\n}"
+				},
+				"url": {
+					"raw": "{{host}}/index.php/employee",
+					"host": [
+						"{{host}}"
+					],
+					"path": [
+						"index.php",
+						"employee"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "TRANSACTION",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [
+					{
+						"key": "system-key",
+						"value": "{{system-key}}",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "{{host}}/index.php/transaction",
+					"host": [
+						"{{host}}"
+					],
+					"path": [
+						"index.php",
+						"transaction"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "TRANSACTION BY ID",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [
+					{
+						"key": "system-key",
+						"value": "{{system-key}}",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "{{host}}/index.php/transaction/id/1",
+					"host": [
+						"{{host}}"
+					],
+					"path": [
+						"index.php",
+						"transaction",
+						"id",
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "ADD TRANSACTION",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "system-key",
+						"value": "{{system-key}}",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"request_name\": \"addTransaction\",\n    \"data\": {\n        \"nomor_meja\": 2,\n        \"detail\":[\n            {\n                \"id_menu\": 4,\n                \"quantity\": 1\n            },\n            {\n                \"id_menu\": 1,\n                \"quantity\": 2\n            },\n            {\n                \"id_menu\": 5,\n                \"quantity\": 2\n            },\n            {\n                \"id_menu\": 7,\n                \"quantity\": 1\n            }\n        ]\n    }\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{host}}/index.php/transaction",
+					"host": [
+						"{{host}}"
+					],
+					"path": [
+						"index.php",
+						"transaction"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GET TRANSACTION BY PARAM",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "system-key",
+						"value": "{{system-key}}",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"request_name\": \"getTransactionByParam\",\n    \"data\": {\n        \"status_pesanan\": \"pending\",\n        \"input_time\": \"2023-02-17\",\n        \"nomor_pesanan\": \"P0001\"\n    }\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{host}}/index.php/transaction",
+					"host": [
+						"{{host}}"
+					],
+					"path": [
+						"index.php",
+						"transaction"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "UPDATE TRANSACTION BY PARAM",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "system-key",
+						"value": "{{system-key}}",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"request_name\": \"editTransactionByParam\",\n    \"where\": {\n        \"id\": 1,\n        \"nomor_pesanan\": \"P0001\",\n        \"nomor_meja\": 2,\n        \"input_time\": \"2023-02-17\"\n    },\n    \"data\": {\n        \"id_employee\": 2,\n        \"status_bayar\": 0,\n        \"metode_bayar\": \"cash\"\n    },\n    \"detail_data\": [\n        {\n            \"id_menu\": 4,\n            \"quantity\": 3,\n            \"status\":1\n        },\n        {\n            \"id_menu\": 5,\n            \"quantity\": 3,\n            \"status\":1\n        }\n    ]\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{host}}/index.php/transaction",
+					"host": [
+						"{{host}}"
+					],
+					"path": [
+						"index.php",
+						"transaction"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "DELETE TRANSACTION BY PARAM",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "system-key",
+						"value": "{{system-key}}",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"request_name\": \"delTransactionByParam\",\n    \"data\": {\n        \"id\": \"1\",\n        \"nomor_pesanan\": \"P0001\",\n        \"input_time\": \"2023-02-17\"\n    }\n}"
+				},
+				"url": {
+					"raw": "{{host}}/index.php/transaction",
+					"host": [
+						"{{host}}"
+					],
+					"path": [
+						"index.php",
+						"transaction"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "TRANSACTION DETAILS BY ID",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [
+					{
+						"key": "system-key",
+						"value": "{{system-key}}",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "{{host}}/index.php/transaction_detail/id/1",
+					"host": [
+						"{{host}}"
+					],
+					"path": [
+						"index.php",
+						"transaction_detail",
+						"id",
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "UPDATE TRANSACTION DETAIL",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "system-key",
+						"value": "{{system-key}}",
+						"type": "text"
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"request_name\": \"editTransactionDtlByParam\",\n    \"where\": {\n        \"id_transaction\": 1,\n        \"id_menu\": 4\n    },\n    \"data\": {\n        \"quantity\": 1,\n        \"status\": 1\n    }\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{host}}/index.php/transaction_detail",
+					"host": [
+						"{{host}}"
+					],
+					"path": [
+						"index.php",
+						"transaction_detail"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "DELETE TRANSACTION DETAIL",
+			"protocolProfileBehavior": {
+				"disabledSystemHeaders": {}
+			},
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "system-key",
+						"value": "{{system-key}}",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"request_name\": \"delTransactionDtlByParam\",\n    \"data\": {\n        \"id_transaction\": 1,\n        \"id_menu\": 7\n    }\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{host}}/index.php/transaction_detail",
+					"host": [
+						"{{host}}"
+					],
+					"path": [
+						"index.php",
+						"transaction_detail"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "New Request",
+			"request": {
+				"method": "GET",
+				"header": []
+			},
+			"response": []
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "host",
+			"value": "http://localhost:8081/restaurant/api",
+			"type": "string"
+		},
+		{
+			"key": "system-key",
+			"value": "ranorano",
+			"type": "string"
+		},
+		{
+			"key": "token",
+			"value": "NAkARz1Kaa7RUTK1Rbg0g_ng_DkWyc7a2zEoMGxzjAE3ETz13pLJ73qCpOOsfI8xlggmWu2S2UDg8ioRNUHibirPWTG_C47YL9xokgeFhM5pFJrvkdMFHSl92Myt6O6opfaEoQVTlLSWi2O__6o0rHtBrvsF5y9OHTm2.G",
+			"type": "string"
+		}
+	]
+}

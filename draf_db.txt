@@ -1,0 +1,31 @@
+[MENU]
+id
+nama
+harga
+status [available,out of stock]
+jenis [drink,food]
+
+[TRANSAKSI]
+id_employee
+nomor_meja
+nomor_pesanan
+status_pesanan [pending,process,ready]
+status_bayar [paid,unpaid]
+metode_bayar [cash,debit,kredit]
+tanggal_transaksi
+
+[TRANSAKSI_DETAIL]
+id_transaction
+id_menu
+quantity
+total
+status [ready,reject]
+
+[EMPLOYEE]
+id_employee
+nama_depan
+nama_belakang
+jabatan [dapur,kasir]
+email
+password
+status [aktif,nonaktif]

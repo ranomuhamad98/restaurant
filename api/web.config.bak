@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration>
+	<system.webServer>
+		<rewrite>
+			<rules>
+				<rule name="Index">
+					<match url="^(.*)$" />
+					<conditions>
+						<add input="{REQUEST_FILENAME}" matchType="IsFile" negate="true" />
+						<add input="{REQUEST_FILENAME}" matchType="IsDirectory" negate="true" />
+					</conditions>
+					<action type="Rewrite" url="index.php/{R:1}" />
+				</rule>
+			</rules>
+		</rewrite>
+		<fastCgi>
+            <application fullPath="C:\Program Files (x86)\PHP\v5.6\php-cgi.exe" activityTimeout="60" requestTimeout="90" instanceMaxRequests="2000000">
+                <environmentVariables>
+                    <environmentVariable name="PHP_FCGI_MAX_REQUESTS" value="2000000" />
+                </environmentVariables>
+            </application>
+        </fastCgi>
+	</system.webServer>
+</configuration>
