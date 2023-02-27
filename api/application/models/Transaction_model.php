@@ -231,12 +231,12 @@ class Transaction_model extends CI_Model {
      	if(array_key_exists('metode_bayar',$param)) unset($param['metode_bayar']);
      	if(array_key_exists('del',$param)) unset($param['del']);
 
-     	if(array_key_exists('id',$data)) unset($param['id']);
-     	if(array_key_exists('nomor_meja',$data)) unset($param['nomor_meja']);
-     	if(array_key_exists('nomor_pesanan',$data)) unset($param['nomor_pesanan']);
-     	if(array_key_exists('status_pesanan',$data)) unset($param['status_pesanan']);
-     	if(array_key_exists('input_time',$data)) unset($param['input_time']);
-     	if(array_key_exists('del',$data)) unset($param['del']);
+     	if(array_key_exists('id',$data)) unset($data['id']);
+     	if(array_key_exists('nomor_meja',$data)) unset($data['nomor_meja']);
+     	if(array_key_exists('nomor_pesanan',$data)) unset($data['nomor_pesanan']);
+     	if(array_key_exists('status_pesanan',$data)) unset($data['status_pesanan']);
+     	if(array_key_exists('input_time',$data)) unset($data['input_time']);
+     	if(array_key_exists('del',$data)) unset($data['del']);
 
      	if(
      		(isset($param['nomor_pesanan']) && !isset($param['input_time'])) 

@@ -63,6 +63,10 @@ $route['dologin'] 							= 'conf/action_login';
 $route['logout'] 							= 'conf/logout';
 
 $route['dashboard']							= 'kitchen/dashboard';
+
+$route['payment_paid/(:any)']				= 'kitchen/payment_paid';
+$route['payment_unpaid/(:any)']			    = 'kitchen/payment_unpaid';
+
 $route['list_menu']							= 'kitchen/list_menu';
 $route['list_menu_off/(:any)']				= 'kitchen/list_menu_off';
 $route['list_menu_on/(:any)']				= 'kitchen/list_menu_on';

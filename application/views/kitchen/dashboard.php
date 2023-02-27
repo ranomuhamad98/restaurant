@@ -20,6 +20,13 @@
 		              '.$info.'
 		          </div>';
 		      }else{
+				if(!empty($this->session->flashdata('info'))){
+					$info = $this->session->flashdata('info');
+					echo '<div class="alert alert-info">
+						<span class="close" data-dismiss="alert">×</span>
+						'.$info.'
+					</div>';
+				}
 	      	?>
 	      	<h2>Order</h2>
 					<table class="table table-responsive table-bordered">
@@ -48,6 +55,16 @@
 					  		<td><?=$row['input_time']?></td>
 					  		<td>
 					  			<a href="<?=base_url('list_order/'.$row['id'])?>" class="label label-info">Detail</a>
+
+								<?php if($row['status_bayar']){ ?>
+									<a href="<?=base_url('payment_unpaid/'.$row['id'])?>" class="label label-success">
+										Unpaid
+									</a>
+								<?php }else{ ?>
+									<a href="<?=base_url('payment_paid/'.$row['id'])?>" class="label label-danger">
+										Paid
+									</a>
+								<?php } ?>
 					  		</td>
 					  	</tr>
 						<?php  } ?>

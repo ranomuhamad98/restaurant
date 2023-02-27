@@ -76,6 +76,31 @@ class Kitchen extends CI_Controller {
         redirect('list_menu');
     }
 
+    public function payment_unpaid(){
+        $this->payment_change($this->uri->segment(2),0);
+    }
+    public function payment_paid(){
+        $this->payment_change($this->uri->segment(2),1);
+    }
+    private function payment_change($id,$status){
+        echo "[".$id." ".$status."]";
+        $body['token']          = $this->token;
+
+        $where['id']            = $id;
+        $data['status_bayar']   = $status;
+        $do['request_name']     = "editTransactionByParam";
+        $do['where']            = $where;
+        $do['data']             = $data;
+
+        $body['url']            = $this->Curl->get_url().'/transaction';
+        
+        $get = json_decode($this->Curl->http_request($body,$do,'POST'), TRUE);
+        $get = $get['message']['message_transaction'];
+        $this->session->set_flashdata('info',"[".$get['response_code']."] ".$get['message']);
+        redirect('dashboard');
+        // echo json_encode($data);/
+    }
+
     public function update_order(){
         /*
         2 = id transaction
